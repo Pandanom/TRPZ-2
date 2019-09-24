@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\App.xaml
-11151548125
+5-155589058
 
-9-174354872
+14-1635037628
 131569487696
-MainWindow.xaml;
+Windows\CarManagement.xaml;Windows\LoginWnd.xaml;Windows\MenuWnd.xaml;Windows\InfoWnd.xaml;Windows\SignUpWnd.xaml;
 
-True
+False
 

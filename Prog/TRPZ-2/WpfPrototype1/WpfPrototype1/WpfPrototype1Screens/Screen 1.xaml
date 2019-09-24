@@ -1,0 +1,31 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:pb="clr-namespace:Microsoft.Expression.Prototyping.Behavior;assembly=Microsoft.Expression.Prototyping.Interactivity" x:Name="Screen_1_Name"
+	x:Class="WpfPrototype1Screens.Screen_1"
+	Width="640" Height="480">
+
+	<Grid x:Name="LayoutRoot" Background="White">
+		<Button HorizontalAlignment="Left" Margin="138.6,0,0,182.64" VerticalAlignment="Bottom" Width="75" Content="Sign Up">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="Click">
+					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_1"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="229,0,0,182.64" VerticalAlignment="Bottom" Width="84" Height="21.96" Content="Log In">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="Click">
+					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_2"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Button>
+		<PasswordBox HorizontalAlignment="Left" Margin="138.6,206.6,0,0" VerticalAlignment="Top" Width="174.4" Height="27.2"/>
+		<TextBox HorizontalAlignment="Left" Margin="138.6,119.4,0,0" VerticalAlignment="Top" Width="174.4" Height="30.4" TextWrapping="Wrap"/>
+		<Label HorizontalAlignment="Left" Margin="138.6,78.6,0,0" VerticalAlignment="Top" Width="75" Height="26.4" Content="Login"/>
+		<Label HorizontalAlignment="Left" Margin="138.6,177.8,0,0" VerticalAlignment="Top" Width="100.8" Height="24.8" Content="Password"/>
+	</Grid>
+</UserControl>

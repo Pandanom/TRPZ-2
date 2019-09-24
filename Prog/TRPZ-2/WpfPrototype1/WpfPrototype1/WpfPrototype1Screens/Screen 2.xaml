@@ -1,0 +1,33 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:pb="clr-namespace:Microsoft.Expression.Prototyping.Behavior;assembly=Microsoft.Expression.Prototyping.Interactivity" x:Name="Screen_2_Name"
+	x:Class="WpfPrototype1Screens.Screen_2"
+	Width="640" Height="480">
+
+	<Grid x:Name="LayoutRoot" Background="White">
+		<RadioButton HorizontalAlignment="Left" Margin="54.4,0,0,182.04" VerticalAlignment="Bottom" Content="Variant 1"/>
+		<RadioButton Margin="241.413,0,316.677,182.04" VerticalAlignment="Bottom" Content="Variant 2" d:LayoutOverrides="Width"/>
+		<RadioButton HorizontalAlignment="Right" Margin="0,0,131.69,182.04" VerticalAlignment="Bottom" Content="Variant n"/>
+		<Image HorizontalAlignment="Left" Margin="54.4,115.2,0,229.716" Width="171.813" Source="Image1.png" Stretch="Fill"/>
+		<Image Margin="241.413,115.2,226.774,229.716" Source="Image1.png" Stretch="Fill"/>
+		<Image HorizontalAlignment="Right" Margin="0,115.2,41.787,229.716" Width="171.813" Source="Image1.png" Stretch="Fill"/>
+		<Button HorizontalAlignment="Left" Margin="54.4,40.2,0,0" VerticalAlignment="Top" Width="75" Content="To menu">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="Click">
+					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_2"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Button>
+		<Button HorizontalAlignment="Right" Margin="0,40.2,41.787,0" VerticalAlignment="Top" Width="75" Content="Continue">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="Click">
+					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_7"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Button>
+	</Grid>
+</UserControl>

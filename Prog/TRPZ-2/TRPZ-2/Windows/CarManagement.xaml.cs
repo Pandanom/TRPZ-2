@@ -10,19 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TRPZ_2
+namespace TRPZ_2.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CarManagement.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CarManagement : Window
     {
-        public MainWindow()
+        public CarManagement()
         {
+            WindowManager.SetUp(this);
             InitializeComponent();
+        }
+        
+        void CarManagement_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            WindowManager.Navigate(this, new MenuWindow(),false);
         }
     }
 }

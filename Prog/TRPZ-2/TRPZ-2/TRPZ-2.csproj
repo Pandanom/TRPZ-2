@@ -55,7 +55,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Windows\CarManagement.xaml.cs">
+      <DependentUpon>CarManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\InfoWnd.xaml.cs">
+      <DependentUpon>InfoWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowManager.cs" />
+    <Compile Include="Windows\SignUpWnd.xaml.cs">
+      <DependentUpon>SignUpWnd.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Windows\CarManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LoginWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MenuWnd.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,10 +81,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Windows\LoginWnd.xaml.cs">
+      <DependentUpon>LoginWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MenuWnd.xaml.cs">
+      <DependentUpon>MenuWnd.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\InfoWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SignUpWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -94,5 +123,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

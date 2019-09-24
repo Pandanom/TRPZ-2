@@ -1,0 +1,26 @@
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\bin\Debug\WpfPrototype1.Screens.dll
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\bin\Debug\WpfPrototype1.Screens.pdb
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\ResolveAssemblyReference.cache
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_1.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_2.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_3.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_4.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_5.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_6.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_7.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 2.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\SketchStyles.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1.g.cs
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_1.g.cs
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_2.g.cs
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_3.g.cs
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_4.g.cs
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_5.g.cs
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_6.g.cs
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_7.g.cs
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 2.g.cs
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\WpfPrototype1.Screens_MarkupCompile.cache
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\WpfPrototype1.Screens.g.resources
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\WpfPrototype1.Screens.dll
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\WpfPrototype1.Screens.pdb
