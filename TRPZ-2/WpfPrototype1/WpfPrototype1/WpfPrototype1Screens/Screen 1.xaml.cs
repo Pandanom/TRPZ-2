@@ -22,5 +22,13 @@ namespace WpfPrototype1Screens
 		{
 			this.InitializeComponent();
 		}
+
+		private void LIbtnClc(object sender, System.Windows.RoutedEventArgs e)
+		{
+			if(LoginBox.Text == "admin" && PasswBox.Password == "admin")
+		     staticStuff.isAdmin = true;
+			else
+				 staticStuff.isAdmin = false;
+		}
 	}
 }

@@ -9,8 +9,8 @@
 	Width="640" Height="480">
 
 	<Grid x:Name="LayoutRoot" Background="White">
-		<Label Margin="109.8,147.2,223,178.4" Content="Info"/>
-		<Button HorizontalAlignment="Left" Margin="109.8,104.8,0,0" VerticalAlignment="Top" Width="75" Content="Back">
+		<Label Margin="109.8,147.2,223,178.4" Content="Autor: Pandanom&#xd;&#xa;Version: 0.001 (not even) pre Alpha&#xd;&#xa;None rights reserved" RenderTransformOrigin="0.482,0.478" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}" FontSize="16"/>
+		<Button HorizontalAlignment="Left" Margin="109.8,104.8,0,0" VerticalAlignment="Top" Width="75" Content="Back" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="Click">
 					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_2"/>

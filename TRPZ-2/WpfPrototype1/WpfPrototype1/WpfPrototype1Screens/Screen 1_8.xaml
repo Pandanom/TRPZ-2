@@ -1,0 +1,39 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:pb="clr-namespace:Microsoft.Expression.Prototyping.Behavior;assembly=Microsoft.Expression.Prototyping.Interactivity" x:Name="Screen_1_8_Name"
+	x:Class="WpfPrototype1Screens.Screen_1_8"
+	Width="640" Height="480">
+
+	<Grid x:Name="LayoutRoot" Background="White">
+		<Label HorizontalAlignment="Left" Margin="77.8,174,0,0" VerticalAlignment="Top" Width="102.4" Height="25.6" Content="Number of slots" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<Label HorizontalAlignment="Left" Margin="77.8,86.8,0,0" VerticalAlignment="Top" Width="153.6" Height="32.8" Content="Name" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<TextBox HorizontalAlignment="Left" Margin="77.8,213.2,0,0" VerticalAlignment="Top" Width="120.8" Height="25.6" TextWrapping="Wrap" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<TextBox HorizontalAlignment="Left" Margin="77.8,123.6,0,0" VerticalAlignment="Top" Width="120.8" Height="30.4" TextWrapping="Wrap" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<ComboBox HorizontalAlignment="Right" Margin="0,123.6,118.4,0" VerticalAlignment="Top" Width="190.2" Height="21.6" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
+			<ComboBox Width="0.8" Height="1.6"/>
+		</ComboBox>
+		<Label HorizontalAlignment="Right" Margin="0,86.8,155,0" VerticalAlignment="Top" Width="153.6" Height="32.8" Content="Edit existing ones :" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<Button HorizontalAlignment="Right" Margin="0,210.44,222.4,0" VerticalAlignment="Top" Width="86.2" Height="28.36" Content="Edit" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<Button HorizontalAlignment="Right" Margin="0,210.44,118.4,0" VerticalAlignment="Top" Width="86.2" Height="28.36" Content="Delete" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<Button HorizontalAlignment="Left" Margin="83.6,0,0,24.84" VerticalAlignment="Bottom" Width="75" Content="Add" RenderTransformOrigin="0.128,0.474" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="Click">
+					<pb:NavigateForwardAction/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Button>
+		<Button HorizontalAlignment="Left" Margin="83.6,38.4,0,0" VerticalAlignment="Top" Width="75" Content="Go Back" RenderTransformOrigin="0.128,0.474" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="Click">
+					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_2"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Button>
+		<Label HorizontalAlignment="Left" Margin="77.8,0,0,174" VerticalAlignment="Bottom" Width="102.4" Height="25.6" Content="Picture" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<TextBox HorizontalAlignment="Left" Margin="77.8,0,0,134.8" VerticalAlignment="Bottom" Width="120.8" Height="25.6" TextWrapping="Wrap" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+	</Grid>
+</UserControl>

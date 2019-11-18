@@ -9,15 +9,15 @@
 	Width="640" Height="480">
 
 	<Grid x:Name="LayoutRoot" Background="White">
-		<Button HorizontalAlignment="Left" Margin="156.997,119.6,0,0" VerticalAlignment="Top" Width="71.56" Content="Button"/>
-		<Button HorizontalAlignment="Left" Margin="156.997,119.6,0,0" VerticalAlignment="Top" Width="99.803" Content="Parking">
+		<Button HorizontalAlignment="Left" Margin="156.997,119.6,0,0" VerticalAlignment="Top" Width="71.56" Content="Button" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<Button HorizontalAlignment="Left" Margin="156.997,119.6,0,0" VerticalAlignment="Top" Width="99.803" Content="Parking" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="Click">
 					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_2"/>
 				</i:EventTrigger>
 			</i:Interaction.Triggers>
 		</Button>
-		<Button HorizontalAlignment="Left" Margin="156.997,174.7,0,0" VerticalAlignment="Top" Width="99.166" Content="Manage cars" RenderTransformOrigin="0.5,0.5">
+		<Button HorizontalAlignment="Left" Margin="156.997,174.7,0,0" VerticalAlignment="Top" Width="99.166" Content="Manage cars" RenderTransformOrigin="0.5,0.5" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="Click">
 					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_5"/>
@@ -32,10 +32,17 @@
 				</TransformGroup>
 			</Button.RenderTransform>
 		</Button>
-		<Button HorizontalAlignment="Left" Margin="156.997,222.8,0,235.24" Width="99.803" Content="About program" d:LayoutOverrides="Height">
+		<Button HorizontalAlignment="Left" Margin="156.997,222.8,0,235.24" Width="99.803" Content="About program" d:LayoutOverrides="Height" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="Click">
 					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_4"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Button>
+		<Button x:Name="Btn" Margin="313,176.4,252,0" VerticalAlignment="Top" Content="Admin menu" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="Click">
+					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_8"/>
 				</i:EventTrigger>
 			</i:Interaction.Triggers>
 		</Button>

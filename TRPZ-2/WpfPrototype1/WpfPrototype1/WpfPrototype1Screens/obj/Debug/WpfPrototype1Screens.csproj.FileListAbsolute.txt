@@ -24,3 +24,5 @@ D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\WpfPrototype1.Screens.g.resources
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\WpfPrototype1.Screens.dll
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\WpfPrototype1.Screens.pdb
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_8.baml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\WpfPrototype1\WpfPrototype1\WpfPrototype1Screens\obj\Debug\Screen 1_8.g.cs

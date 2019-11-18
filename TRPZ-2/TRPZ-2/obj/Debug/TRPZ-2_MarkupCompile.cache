@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Stas\навч\ТРПЗ-2\TRPZ-2\TRPZ-2\obj\Debug\
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\obj\Debug\
 TRPZ_2
 none
 false
 DEBUG;TRACE
-D:\Stas\навч\ТРПЗ-2\TRPZ-2\TRPZ-2\App.xaml
-5-155589058
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\App.xaml
+71866922115
 
-10816538038
-131569487696
-Windows\CarManagement.xaml;Windows\LoginWnd.xaml;Windows\MenuWnd.xaml;Windows\InfoWnd.xaml;Windows\SignUpWnd.xaml;
+24-543223
+1697889005
+View\CarManagement.xaml;View\ChooseParkingWnd.xaml;View\LoginWnd.xaml;View\MenuWnd.xaml;View\InfoWnd.xaml;View\ParkingWnd.xaml;View\SignUpWnd.xaml;
 
 False
 

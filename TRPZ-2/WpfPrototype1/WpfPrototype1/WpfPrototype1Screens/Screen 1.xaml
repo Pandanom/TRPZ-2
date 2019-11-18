@@ -9,22 +9,22 @@
 	Width="640" Height="480">
 
 	<Grid x:Name="LayoutRoot" Background="White">
-		<Button HorizontalAlignment="Left" Margin="138.6,0,0,182.64" VerticalAlignment="Bottom" Width="75" Content="Sign Up">
+		<Button HorizontalAlignment="Left" Margin="138.6,0,0,182.64" VerticalAlignment="Bottom" Width="75" Content="Sign Up" Style="{DynamicResource FocusControl-Sketch}" Background="{x:Null}">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="Click">
 					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_1"/>
 				</i:EventTrigger>
 			</i:Interaction.Triggers>
 		</Button>
-		<Button HorizontalAlignment="Left" Margin="229,0,0,182.64" VerticalAlignment="Bottom" Width="84" Height="21.96" Content="Log In">
+		<Button HorizontalAlignment="Left" Margin="229,0,0,182.64" VerticalAlignment="Bottom" Width="84" Height="21.96" Content="Log In" Style="{DynamicResource FocusControl-Sketch}" Click="LIbtnClc" Background="{DynamicResource BaseBackground-Sketch}">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="Click">
 					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_2"/>
 				</i:EventTrigger>
 			</i:Interaction.Triggers>
 		</Button>
-		<PasswordBox HorizontalAlignment="Left" Margin="138.6,206.6,0,0" VerticalAlignment="Top" Width="174.4" Height="27.2"/>
-		<TextBox HorizontalAlignment="Left" Margin="138.6,119.4,0,0" VerticalAlignment="Top" Width="174.4" Height="30.4" TextWrapping="Wrap"/>
+		<PasswordBox x:Name="PasswBox" HorizontalAlignment="Left" Margin="138.6,206.6,0,0" VerticalAlignment="Top" Width="174.4" Height="27.2" Style="{DynamicResource FocusControl-Sketch}" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<TextBox x:Name="LoginBox" HorizontalAlignment="Left" Margin="138.6,119.4,0,0" VerticalAlignment="Top" Width="174.4" Height="30.4" TextWrapping="Wrap" Style="{DynamicResource FocusControl-Sketch}" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
 		<Label HorizontalAlignment="Left" Margin="138.6,78.6,0,0" VerticalAlignment="Top" Width="75" Height="26.4" Content="Login"/>
 		<Label HorizontalAlignment="Left" Margin="138.6,177.8,0,0" VerticalAlignment="Top" Width="100.8" Height="24.8" Content="Password"/>
 	</Grid>

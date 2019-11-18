@@ -46,8 +46,8 @@
       <FileName>Screen 1_4.xaml</FileName>
       <Annotations />
       <Position>
-        <X>152</X>
-        <Y>73</Y>
+        <X>181</X>
+        <Y>74</Y>
       </Position>
       <VisualTag>0</VisualTag>
     </Screen>
@@ -82,8 +82,20 @@
       <FileName>Screen 1_7.xaml</FileName>
       <Annotations />
       <Position>
-        <X>281</X>
-        <Y>65</Y>
+        <X>445</X>
+        <Y>19</Y>
+      </Position>
+      <VisualTag>0</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Navigation</Type>
+      <ClassName>WpfPrototype1Screens.Screen_1_8</ClassName>
+      <DisplayName>AdminMenu</DisplayName>
+      <FileName>Screen 1_8.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>85</X>
+        <Y>100</Y>
       </Position>
       <VisualTag>0</VisualTag>
     </Screen>
@@ -162,6 +174,13 @@
     <Connection>
       <Source>WpfPrototype1Screens.Screen_1_7</Source>
       <Target>WpfPrototype1Screens.Screen_2</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>WpfPrototype1Screens.Screen_1_2</Source>
+      <Target>WpfPrototype1Screens.Screen_1_8</Target>
       <Type>Navigation</Type>
       <TransitionType>Fade</TransitionType>
       <VisualTag>0</VisualTag>

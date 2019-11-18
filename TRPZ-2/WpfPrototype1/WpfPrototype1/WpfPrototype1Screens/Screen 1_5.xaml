@@ -9,26 +9,26 @@
 	Width="640" Height="480">
 
 	<Grid x:Name="LayoutRoot" Background="White">
-		<Label HorizontalAlignment="Left" Margin="77.8,0,0,183.264" VerticalAlignment="Bottom" Width="120.8" Height="24.336" Content="Additional info"/>
-		<Label HorizontalAlignment="Left" Margin="77.8,174,0,0" VerticalAlignment="Top" Width="80.8" Height="25.6" Content="Color"/>
-		<Label HorizontalAlignment="Left" Margin="77.8,86.8,0,0" VerticalAlignment="Top" Width="153.6" Height="32.8" Content="Registration number"/>
-		<TextBox HorizontalAlignment="Left" Margin="77.8,0,0,71.6" VerticalAlignment="Bottom" Width="153.6" Height="101.778" TextWrapping="Wrap"/>
-		<TextBox HorizontalAlignment="Left" Margin="77.8,213.2,0,0" VerticalAlignment="Top" Width="120.8" Height="25.6" TextWrapping="Wrap"/>
-		<TextBox HorizontalAlignment="Left" Margin="77.8,123.6,0,0" VerticalAlignment="Top" Width="120.8" Height="30.4" TextWrapping="Wrap"/>
-		<ComboBox HorizontalAlignment="Right" Margin="0,123.6,118.4,0" VerticalAlignment="Top" Width="190.2" Height="21.6">
+		<Label HorizontalAlignment="Left" Margin="77.8,0,0,183.264" VerticalAlignment="Bottom" Width="120.8" Height="24.336" Content="Additional info" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<Label HorizontalAlignment="Left" Margin="77.8,174,0,0" VerticalAlignment="Top" Width="80.8" Height="25.6" Content="Color" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<Label HorizontalAlignment="Left" Margin="77.8,86.8,0,0" VerticalAlignment="Top" Width="153.6" Height="32.8" Content="Registration number" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<TextBox HorizontalAlignment="Left" Margin="77.8,0,0,71.6" VerticalAlignment="Bottom" Width="153.6" Height="101.778" TextWrapping="Wrap" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<TextBox HorizontalAlignment="Left" Margin="77.8,213.2,0,0" VerticalAlignment="Top" Width="120.8" Height="25.6" TextWrapping="Wrap" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<TextBox HorizontalAlignment="Left" Margin="77.8,123.6,0,0" VerticalAlignment="Top" Width="120.8" Height="30.4" TextWrapping="Wrap" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<ComboBox HorizontalAlignment="Right" Margin="0,123.6,118.4,0" VerticalAlignment="Top" Width="190.2" Height="21.6" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
 			<ComboBox Width="0.8" Height="1.6"/>
 		</ComboBox>
-		<Label HorizontalAlignment="Right" Margin="0,86.8,155,0" VerticalAlignment="Top" Width="153.6" Height="32.8" Content="Edit existing ones :"/>
-		<Button HorizontalAlignment="Right" Margin="0,210.44,222.4,0" VerticalAlignment="Top" Width="86.2" Height="28.36" Content="Edit"/>
-		<Button HorizontalAlignment="Right" Margin="0,210.44,118.4,0" VerticalAlignment="Top" Width="86.2" Height="28.36" Content="Delete"/>
-		<Button HorizontalAlignment="Left" Margin="83.6,0,0,24.84" VerticalAlignment="Bottom" Width="75" Content="Add" RenderTransformOrigin="0.128,0.474">
+		<Label HorizontalAlignment="Right" Margin="0,86.8,155,0" VerticalAlignment="Top" Width="153.6" Height="32.8" Content="Edit existing ones :" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<Button HorizontalAlignment="Right" Margin="0,210.44,222.4,0" VerticalAlignment="Top" Width="86.2" Height="28.36" Content="Edit" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<Button HorizontalAlignment="Right" Margin="0,210.44,118.4,0" VerticalAlignment="Top" Width="86.2" Height="28.36" Content="Delete" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+		<Button HorizontalAlignment="Left" Margin="83.6,0,0,24.84" VerticalAlignment="Bottom" Width="75" Content="Add" RenderTransformOrigin="0.128,0.474" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="Click">
 					<pb:NavigateForwardAction/>
 				</i:EventTrigger>
 			</i:Interaction.Triggers>
 		</Button>
-		<Button HorizontalAlignment="Left" Margin="83.6,38.4,0,0" VerticalAlignment="Top" Width="75" Content="Go Back" RenderTransformOrigin="0.128,0.474">
+		<Button HorizontalAlignment="Left" Margin="83.6,38.4,0,0" VerticalAlignment="Top" Width="75" Content="Go Back" RenderTransformOrigin="0.128,0.474" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="Click">
 					<pb:NavigateToScreenAction TargetScreen="WpfPrototype1Screens.Screen_1_2"/>

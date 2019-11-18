@@ -1,0 +1,67 @@
+﻿<Window x:Class="TRPZ_2.View.CarManagement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TRPZ_2.View"
+        mc:Ignorable="d"
+         Closing="CarManagement_Closing"  
+        Title="CarManagement" Height="499" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button" >
+            <Style.Setters>
+                <Setter Property="Foreground" Value="#FFDFDFDF"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+
+                    <Setter Property="Foreground" Value="DarkSlateGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FFD0D0D0">
+        <Label HorizontalAlignment="Left" Margin="77.8,0,0,183.264" VerticalAlignment="Bottom" Width="120.8" Height="24.336" Content="Additional info" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+        <Label HorizontalAlignment="Left" Margin="77.8,174,0,0" VerticalAlignment="Top" Width="80.8" Height="25.6" Content="Color" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+        <Label HorizontalAlignment="Left" Margin="77.8,86.8,0,0" VerticalAlignment="Top" Width="153.6" Height="32.8" Content="Registration number" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}"/>
+        <TextBox HorizontalAlignment="Left" Margin="77.8,0,0,71.6" VerticalAlignment="Bottom" Width="153.6" Height="101.778" TextWrapping="Wrap" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+        <TextBox HorizontalAlignment="Left" Margin="78,211,0,0" VerticalAlignment="Top" Width="121" Height="26" TextWrapping="Wrap" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+        <TextBox HorizontalAlignment="Left" Margin="77.8,123.6,0,0" VerticalAlignment="Top" Width="120.8" Height="30.4" TextWrapping="Wrap" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+        <ComboBox HorizontalAlignment="Right" Margin="0,123.6,118.4,0" VerticalAlignment="Top" Width="190.2" Height="21.6" Background="{DynamicResource BaseBackground-Sketch}" BorderBrush="{DynamicResource FocusedBorder-Sketch}">
+            <ComboBox Width="0.8" Height="1.6"/>
+        </ComboBox>
+        <Label HorizontalAlignment="Right" Margin="0,86.8,155,0" VerticalAlignment="Top" Width="153.6" Height="32.8" Content="Edit existing ones :" />
+        <Button x:Name="EditBtn" Margin="613,187,0,0" Content="Edit" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="45" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display" HorizontalAlignment="Left" Width="100" >
+            <Button.BorderBrush>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="file:///D:/Stas/навч/ТРПЗ-2/Prog/TRPZ-2/Button.png" Opacity="2"/>
+            </Button.Background>
+        </Button>
+        <Button Margin="473,187,0,0"  Content="Delete" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="45" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display" HorizontalAlignment="Left" Width="100" >
+            <Button.BorderBrush>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="file:///D:/Stas/навч/ТРПЗ-2/Prog/TRPZ-2/Button.png" Opacity="2"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="AddBtn" Margin="78,410,0,0" Content="Add" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="45" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display" HorizontalAlignment="Left" Width="100" >
+            <Button.BorderBrush>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="file:///D:/Stas/навч/ТРПЗ-2/Prog/TRPZ-2/Button.png" Opacity="2"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BackBtn" Content="Back to menu"  Margin="10,10,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="45" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display" HorizontalAlignment="Left" Width="120" Click="BackBtn_Click" >
+            <Button.BorderBrush>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="file:///D:/Stas/навч/ТРПЗ-2/Prog/TRPZ-2/Button.png" Opacity="2"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

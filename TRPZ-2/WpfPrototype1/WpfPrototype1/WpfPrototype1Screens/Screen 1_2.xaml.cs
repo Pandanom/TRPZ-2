@@ -21,6 +21,9 @@ namespace WpfPrototype1Screens
 		public Screen_1_2()
 		{
 			this.InitializeComponent();
+			if(!staticStuff.isAdmin)
+				Btn.Visibility = Visibility.Hidden;
+		
 		}
 	}
 }
