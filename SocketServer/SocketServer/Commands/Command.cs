@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SocketServer.Commands
 {
-    public abstract class Command
+    public abstract class Command:ICommand
     {
         public abstract Task<byte[]> GetData(byte[] data);
         protected byte[] data;

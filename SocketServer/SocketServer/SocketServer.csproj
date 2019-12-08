@@ -65,6 +65,7 @@
     <Compile Include="CommandManager.cs" />
     <Compile Include="Commands\CarCommand.cs" />
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ParkingCommand.cs" />
     <Compile Include="Commands\SlotCommand.cs" />
     <Compile Include="Commands\TalonCommand.cs" />

@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Net;
 using ModelsForWpf;
 using System.Threading;
+using System.IO;
 
 namespace SocketServer
 {
@@ -15,7 +16,7 @@ namespace SocketServer
 
         public static void Main(String[] args)
         {
-            CommandManager.SetUp();
+          
             var serv = new Server();
 
         }

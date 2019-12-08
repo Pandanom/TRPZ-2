@@ -100,8 +100,9 @@ namespace SocketServer
 
             }
 
-            static public async void CallBack(IAsyncResult ar)
+            static public async void CallBack(IAsyncResult _)
             {
+                
                 await new CommandManager().Execute(state.workSocket, state);
             }
            

@@ -48,10 +48,6 @@ D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\obj\Debug\View\InfoWnd.baml
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\obj\Debug\View\SignUpWnd.baml
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\obj\Debug\View\ChooseParkingWnd.g.cs
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\obj\Debug\View\ChooseParkingWnd.baml
-D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\EntityFramework.dll
-D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\EntityFramework.SqlServer.dll
-D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\EntityFramework.xml
-D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\EntityFramework.SqlServer.xml
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\obj\Debug\TRPZ-2.csproj.CopyComplete
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\obj\Debug\View\ParkingWnd.g.cs
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\obj\Debug\View\ParkingWnd.baml

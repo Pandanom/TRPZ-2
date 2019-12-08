@@ -8,30 +8,31 @@ using System.Threading.Tasks;
 using SocketServer.DB.DBModel;
 using static SocketServer.Server;
 using SocketServer.Commands;
+using System.IO;
 
 namespace SocketServer
 {
     class CommandManager
     {
-        static Command[] commands = new Command[5];
-        public static void SetUp()
+        static ICommand[] commands = new ICommand[5];
+        Socket handler;
+        static CommandManager()
         {
-            
             commands[0] = new UserCommand();
-            commands[1]=new CarCommand();
-            commands[2]= new TalonCommand();
-            commands[3]= new SlotCommand();
-            commands[4]= new ParkingCommand();
+            commands[1] = new CarCommand();
+            commands[2] = new TalonCommand();
+            commands[3] = new SlotCommand();
+            commands[4] = new ParkingCommand();
         }
         public CommandManager()
         {
          
         }
 
-        public async Task Execute(Socket handler, StateObject state)
+        public async Task Execute(Socket h, StateObject state)
         {
-           
-           await Respond( await GetData(state.buffer),handler);
+            this.handler = h;  
+           await Respond( await GetData(state.buffer));
             handler.Shutdown(SocketShutdown.Both);
             handler.Close();
             Server.AsynchronousSocketListener.allDone.Set();
@@ -51,12 +52,34 @@ namespace SocketServer
                 {
                     Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
                 }
+            else if(first ==6)
+            {
+                using (FileStream file = new FileStream("Agreement.docx", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    byte[] buff = new byte[16384];
+                    byte[] last = new byte[file.Length % 16384];
+                    int iter = (int)((file.Length) / 16384);
+                    for (int i = 0; i < iter; i++)
+                    {
+                        file.Read(buff, i * 16384, 16384);
+                        handler.Send(buff);
+                    }
+                     file.Read(last, iter*16384, (int)(file.Length % 16384));
+                    handler.Send(last);
+                }
+               
+            }
             else
                 return null;
             return null;
         }
 
-        async Task Respond(byte[] data,Socket handler)
+
+
+
+
+
+        async Task Respond(byte[] data)
         {
             
             await Task.Run(() =>
@@ -66,6 +89,7 @@ namespace SocketServer
                 else
                     handler.Send(new byte[] { 1 });
                
+                
             }
              );
         }

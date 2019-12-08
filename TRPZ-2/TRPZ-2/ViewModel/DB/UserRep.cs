@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelsForWpf;
-using System.Data.Entity;
 using System.Windows;
 using System.Net;
 using System.Net.Sockets;
