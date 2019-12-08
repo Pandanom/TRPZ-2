@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TRPZ_2.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="400">
+        Title="MainWindow" Height="545.31" Width="408">
     <Window.Resources>
         <Style TargetType="Button" >
             <Style.Setters>
@@ -19,9 +19,12 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
+
+
+
     <Grid Margin="0,0,0,0" Background="#FFD0D0D0">
 
-        <Button x:Name="InfoNavBtn" Content="About program" Margin="130,300,130,0" VerticalAlignment="Top" Click="InfoNavBtn_Click" RenderTransformOrigin="0.5,0.5" Height="50" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display" >
+        <Button x:Name="InfoNavBtn" Content="About program" Margin="127,374,132.6,0" VerticalAlignment="Top" Click="InfoNavBtn_Click" RenderTransformOrigin="0.5,0.5" Height="50" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display" >
             <Button.BorderBrush>
                 <SolidColorBrush Color="White" Opacity="0"/>
             </Button.BorderBrush>
@@ -37,7 +40,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="ParkNavBtn" Content="Parking" Margin="130,50,130,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="53" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display"  Click="ParkNavBtn_Click">
+        <Button x:Name="ParkNavBtn" Content="Parking" Margin="127,154,133.6,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="53" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display"  Click="ParkNavBtn_Click">
             <Button.BorderBrush>
                 <SolidColorBrush Color="White" Opacity="0"/>
             </Button.BorderBrush>
@@ -53,7 +56,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="CarManageNavBtn" Content="Manage Cars" Margin="130,171,129.6,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="53" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display"  Click="CarManageNavBtn_Click">
+        <Button x:Name="CarManageNavBtn" Content="Manage Cars" Margin="127,226,132.6,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="53" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display"  Click="CarManageNavBtn_Click">
             <Button.BorderBrush>
                 <SolidColorBrush Color="White" Opacity="0"/>
             </Button.BorderBrush>
@@ -69,6 +72,72 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        <Button x:Name="AdminMenuNavBtn" Content="Admin Menu" Margin="127,299,132.6,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="53" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display" Click="AdminMenuNavBtn_Click" >
+            <Button.BorderBrush>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush Stretch="UniformToFill" Opacity="2" ImageSource="{DynamicResource MenuBtn}"/>
+            </Button.Background>
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Rectangle x:Name="AnimRec" HorizontalAlignment="Left" Height="130" Margin="127,10,0,0" VerticalAlignment="Top" Width="133" Fill="#FF606060" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <!-- giving the transform a name tells the framework not to freeze it -->
+                <RotateTransform x:Name="noFreeze" />
+            </Rectangle.RenderTransform>
+            <Rectangle.Triggers>
+                <EventTrigger RoutedEvent="Rectangle.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation  To="Green" 
+                                    Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" 
+                                     
+                                    Duration="0:0:2"
+                                    RepeatBehavior="Forever" />
+                            <ColorAnimation  To="Blue" 
+                                    Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" 
+                                     
+                                   Duration="0:0:2"
+                                    RepeatBehavior="Forever"
+                                              BeginTime="0:0:2"/>
+                            <ColorAnimation  To="Red" 
+                                    Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" 
+                                  
+                                    Duration="0:0:2"
+                                    RepeatBehavior="Forever"
+                                              BeginTime="0:0:4"/>
+                            <ColorAnimation  To="#FF606060" 
+                                    Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" 
+                                    Duration="0:0:2"
+                                    RepeatBehavior="Forever"
+                                              BeginTime="0:0:6"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseDown">
+                    <BeginStoryboard>
+                        <Storyboard  >
+                            <DoubleAnimation  x:Name="RotateAnim" To="-360" 
+                                       Storyboard.TargetProperty="(Rectangle.RenderTransform).(RotateTransform.Angle)"
+                                    Duration="0:0:1"
+                                              FillBehavior="Stop"
+                                               DecelerationRatio="1"                                             
+                               />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Rectangle.Triggers>
+        </Rectangle>
+        <Label x:Name="AnimLbl" Content="P" HorizontalAlignment="Left" Margin="171,19,0,0" VerticalAlignment="Top" FontSize="72" Foreground="White" Height="91">
 
+        </Label>
     </Grid>
 </Window>

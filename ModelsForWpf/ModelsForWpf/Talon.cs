@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
-namespace TRPZ_2.Model
+namespace ModelsForWpf
 {
-    [Table("Talons")]
+    [Serializable]
     public class Talon
     {
-        [Key]
         public int Id { get; set; }
         public DateTime One { get; set; }
         public DateTime Two { get; set; }

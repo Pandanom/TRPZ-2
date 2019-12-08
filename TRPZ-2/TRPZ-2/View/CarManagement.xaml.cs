@@ -33,7 +33,8 @@ namespace TRPZ_2.View
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            WindowManager.Navigate(this, new MenuWindow(), false);
+            
+            Close();
         }
     }
 }

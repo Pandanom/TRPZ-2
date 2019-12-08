@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -24,8 +25,7 @@ namespace TRPZ_2.View
         public MenuWindow()
         {
             WindowManager.SetUp(this);
-            
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         private void InfoNavBtn_Click(object sender, RoutedEventArgs e)
@@ -43,6 +43,11 @@ namespace TRPZ_2.View
         private void CarManageNavBtn_Click(object sender, RoutedEventArgs e)
         {
             WindowManager.Navigate(this, new CarManagement());
+        }
+
+        private void AdminMenuNavBtn_Click(object sender, RoutedEventArgs e)
+        {
+            WindowManager.Navigate(this, new AdminWnd());
         }
     }
 }

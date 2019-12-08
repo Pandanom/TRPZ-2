@@ -29,7 +29,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid x:Name="Grd" Background="#FFD0D0D0" Margin="0,0,-6.4,0">
+    <Grid x:Name="Grd" Background="#FFD0D0D0" Margin="0,0,-6.4,0" Loaded="Grd_Loaded">
         <Button x:Name="PrevBtn" Content="◀" Margin="25,182,430,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="37" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display" >
             <Button.BorderBrush>
                 <SolidColorBrush Color="White" Opacity="0"/>

@@ -3,79 +3,131 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TRPZ_2.Model;
+using ModelsForWpf;
 using System.Data.Entity;
+using System.Windows;
+using System.Net;
+using System.Net.Sockets;
+using System.Configuration;
 
 namespace TRPZ_2.ViewModel.DB
 {
     class UserRep : IRepository<User>
     {
-        private class Context : DbContext
-        {
-            public Context() : base("DefaultConnection")
-            { }
-
-            public DbSet<User> Items { get; set; }
-        }
-
-       Context db;
-
+        Socket socket;
         public UserRep()
         {
-            db = new Context();
+            try
+            {
+                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["Ip"].ToString()),
+                  int.Parse(ConfigurationManager.AppSettings["Port"].ToString()));
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socket.Connect(ipPoint);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        public IEnumerable<User> GetItems()
-        {
-            return db.Items.ToList();
-        }
-
-        public User GetItem(int id)
-        {
-            foreach (var i in db.Items)
-                if (i.Id == id)
-                    return i;
-            return null;
-        }
 
         public async Task Create(User item)
         {
-            await Task.Run(() =>  db.Items.Add(item));
+            //3
+            await Task.Run(() => {
+                byte[] data = new Converter<ModelsForWpf.User>().ObjectToByteArray(item);
+                var toSend = new byte[data.Length + 1];
+                toSend[0] = 31;
+                for (int i = 0; i < data.Length; i++)
+                    toSend[i + 1] = data[i];
+                socket.Send(toSend);
+            });
         }
 
-        public  async Task Update(User item)
-        {
-            await Task.Run(() => db.Entry(item).State = EntityState.Modified);
+        public async Task Delete(int id)
+        {//5
+            await Task.Run(() => {
+                var item = new User();
+                item.Id = id;
+                byte[] data = new Converter<ModelsForWpf.User>().ObjectToByteArray(item);
+                var toSend = new byte[data.Length + 1];
+                toSend[0] = 51;
+                for (int i = 0; i < data.Length; i++)
+                    toSend[i + 1] = data[i];
+                socket.Send(toSend);
+            });
         }
 
-        public  async Task Delete(int id)
-        {
-            await Task.Run(async () =>
-            {
-                using (var c = new CarRep())
+        public async Task<User> GetItem(int id)
+        {//2
+            return await Task.Run(() => {
+                var item = new User();
+                item.Id = id;
+                byte[] data = new Converter<User>().ObjectToByteArray(item);
+                var toSend = new byte[data.Length + 1];
+                toSend[0] = 31;
+                for (int i = 0; i < data.Length; i++)
+                    toSend[i + 1] = data[i];
+                socket.Send(toSend);
+
+                data = new byte[1024];
+                do
                 {
-                    foreach (var i in db.Items)
-                        if (i.Id == id)
-                        {
+                    socket.Receive(data, data.Length, 0);
 
-                            foreach (var j in c.GetItems())
-                            {
-                                if (j.Owner_Id == id)
-                                    await c.Delete(j.Id);
-                            }
-                            await c.Save();
-
-                            db.Items.Remove(i);
-                            return;
-                        }
                 }
-            }
-            );
+                while (socket.Available > 0);
+                try
+                {
+                    var ret = new Converter<User>().ByteArrayToObject(data);
+                    return ret;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return null;
+            });
         }
 
-        public async Task Save()
-        {
-           await db.SaveChangesAsync();
+        public async Task<IEnumerable<User>> GetItems()
+        {//1
+            return await Task.Run(() => {
+
+                var toSend = new byte[1];
+                toSend[0] = 11;
+
+                socket.Send(toSend);
+
+                byte[] data = new byte[10240];
+                do
+                {
+                    socket.Receive(data, data.Length, 0);
+                }
+                while (socket.Available > 0);
+                try
+                {
+                    var ret = new Converter<List<User>>().ByteArrayToObject(data);
+                    return ret;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return null;
+            });
+        }
+
+        public async Task Update(User item)
+        {//4
+            await Task.Run(() => {
+                byte[] data = new Converter<ModelsForWpf.User>().ObjectToByteArray(item);
+                var toSend = new byte[data.Length + 1];
+                toSend[0] = 41;
+                for (int i = 0; i < data.Length; i++)
+                    toSend[i + 1] = data[i];
+                socket.Send(toSend);
+            });
         }
 
         #region IDisposable Support
@@ -87,11 +139,13 @@ namespace TRPZ_2.ViewModel.DB
             {
                 if (disposing)
                 {
-                    db.Dispose();
-                   
+                    // TODO: dispose managed state (managed objects).
+                    socket.Shutdown(SocketShutdown.Both);
+                    socket.Close();
                 }
 
-               
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
 
                 disposedValue = true;
             }
@@ -109,9 +163,10 @@ namespace TRPZ_2.ViewModel.DB
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
             // TODO: uncomment the following line if the finalizer is overridden above.
-             GC.SuppressFinalize(this);
+            // GC.SuppressFinalize(this);
         }
         #endregion
+
 
     }
 }

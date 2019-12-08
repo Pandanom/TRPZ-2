@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TRPZ_2.Model;
+using ModelsForWpf;
 using TRPZ_2.View;
 
 namespace TRPZ_2.ViewModel
@@ -20,7 +20,6 @@ namespace TRPZ_2.ViewModel
     {
         ChooseParkingWnd pWindow;
         Grid grd;
-        DB.ParkingRep pr;
         Image cur;
         int imNumber;
         Label lbl;
@@ -28,9 +27,8 @@ namespace TRPZ_2.ViewModel
         {
             grd = g;
             pWindow = w;
-            pr = new DB.ParkingRep();
-            WindowManager.SetUp(w);
-            SetUp();
+          
+            WindowManager.SetUp(w);          
             foreach(var el in grd.Children)
             {
                 if (el.ToString().Contains("◀"))
@@ -41,9 +39,11 @@ namespace TRPZ_2.ViewModel
             }
         }
 
-        public void SetUp()
+        public async Task SetUp()
         {
-            List<Parking> l = pr.GetItems().ToList();
+            List<Parking> l;
+            using (var pr = new DB.ParkingRep())
+                 l = (await pr.GetItems()).ToList();
             
             var p = l.First();
             BitmapImage btm = new BitmapImage(new Uri(p.Adress, UriKind.Absolute));
@@ -51,7 +51,9 @@ namespace TRPZ_2.ViewModel
             i.Source = btm;
             i.Stretch = Stretch.Uniform;
             i.Margin = new Thickness(120, 70, 120, 70);
-            i.MouseDown += (e, a) => { WindowManager.Navigate(pWindow, new ParkingWnd(p)); };
+            i.MouseDown += (s, ev) => {
+                WindowManager.Navigate(pWindow, new ParkingWnd(p));
+            };
             cur = i;
             grd.Children.Add(i);
 
@@ -65,10 +67,12 @@ namespace TRPZ_2.ViewModel
 
         }
 
-        public void PrevIm(object sender, RoutedEventArgs e)
+        public async void PrevIm(object sender, RoutedEventArgs e)
         {
             grd.Children.Remove(cur);
-            List<Parking> l = pr.GetItems().ToList();
+            List<Parking> l;
+            using (var pr = new DB.ParkingRep())
+                l = (await pr.GetItems()).ToList();
             if (--imNumber < 0)
                 imNumber = l.Count -1;
             var p = l[imNumber];
@@ -83,10 +87,12 @@ namespace TRPZ_2.ViewModel
             grd.Children.Add(i);
         }
 
-        public void NextIm(object sender, RoutedEventArgs e)
+        public async void NextIm(object sender, RoutedEventArgs e)
         {
             grd.Children.Remove(cur);
-            List<Parking> l = pr.GetItems().ToList();
+            List<Parking> l;
+            using (var pr = new DB.ParkingRep())
+                l = (await pr.GetItems()).ToList();
             if (++imNumber >= l.Count)
                 imNumber = 0;
             var p = l[imNumber];

@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TRPZ_2.Model;
+using ModelsForWpf;
+using TRPZ_2.ViewModel;
 
 namespace TRPZ_2.View
 {
@@ -28,7 +29,20 @@ namespace TRPZ_2.View
         public ParkingWnd(Parking p)
         {
             InitializeComponent();
+            var PWL = new ParkingWndLogic(this, grid, p);
         }
 
+      
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            WindowManager.Navigate(this, new MenuWindow(), false);
+        }
     }
 }

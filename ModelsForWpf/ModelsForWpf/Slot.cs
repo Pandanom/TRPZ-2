@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
-namespace TRPZ_2.Model
+namespace ModelsForWpf
 {
-    [Table("Slots")]
+    [Serializable]
     public class Slot
     {
-        [Key]
-       public  int Id { get; set; }
+       
+        public int Id { get; set; }
         public List<Talon> Talons { get; set; }
-        public int XCord { get;  set; }
+        public int XCord { get; set; }
         public int YCord { get; set; }
         public Parking Parking { get; set; }
 
@@ -29,6 +25,7 @@ namespace TRPZ_2.Model
             XCord = xCord;
             YCord = yCord;
             Parking = parking;
+            
         }
     }
 }

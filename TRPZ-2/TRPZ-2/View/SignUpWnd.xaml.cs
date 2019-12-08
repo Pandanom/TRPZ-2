@@ -28,10 +28,14 @@ namespace TRPZ_2.View
            
         }
 
-        private void SingUp_Click(object sender, RoutedEventArgs e)
+        private async void SingUp_Click(object sender, RoutedEventArgs e)
         {
             //todo sign up
-            WindowManager.Navigate(this, new MenuWindow());
+            AccountManager manager = new AccountManager();
+            if (await manager.Validate(LoginB.Text,PasswB.Password,ConPassB.Password,PhoneB.Text,NameB.Text))
+                WindowManager.Navigate(this, new MenuWindow());
+            else
+                MessageBox.Show("Invalid input!") ;
         }
     }
 }

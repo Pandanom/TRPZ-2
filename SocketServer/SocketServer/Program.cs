@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net.Sockets;
+using System.Net;
+using ModelsForWpf;
+using System.Threading;
+
+namespace SocketServer
+{
+    class Program
+    {
+
+        public static void Main(String[] args)
+        {
+            CommandManager.SetUp();
+            var serv = new Server();
+
+        }
+        
+    }
+}

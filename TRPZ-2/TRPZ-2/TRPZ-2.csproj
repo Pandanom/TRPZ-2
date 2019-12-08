@@ -44,8 +44,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ModelsForWpf">
+      <HintPath>..\..\ModelsForWpf\ModelsForWpf\bin\Debug\netstandard2.0\ModelsForWpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,17 +63,28 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Car.cs" />
-    <Compile Include="Model\Parking.cs" />
-    <Compile Include="Model\Slot.cs" />
-    <Compile Include="Model\Talon.cs" />
-    <Compile Include="Model\User.cs" />
+    <Compile Include="ViewModel\AccountManager.cs" />
     <Compile Include="ViewModel\DB\CarRep.cs" />
     <Compile Include="ViewModel\DB\IRepository.cs" />
     <Compile Include="ViewModel\DB\ParkingRep.cs" />
@@ -77,6 +92,10 @@
     <Compile Include="ViewModel\DB\TalonRep.cs" />
     <Compile Include="ViewModel\DB\UserRep.cs" />
     <Compile Include="ViewModel\ParkingCoosingWnd.cs" />
+    <Compile Include="ViewModel\ParkingWndLogic.cs" />
+    <Compile Include="View\AdminWnd.xaml.cs">
+      <DependentUpon>AdminWnd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CarManagement.xaml.cs">
       <DependentUpon>CarManagement.xaml</DependentUpon>
     </Compile>
@@ -93,6 +112,10 @@
     <Compile Include="View\SignUpWnd.xaml.cs">
       <DependentUpon>SignUpWnd.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AdminWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CarManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

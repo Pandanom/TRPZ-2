@@ -4,9 +4,55 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TRPZ_2.View"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
         mc:Ignorable="d"
-        Title="ParkingWnd" Height="450" Width="800">
-    <Grid>
-        
+        Title="ParkingWnd" Height="450" Width="800" Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="Button" >
+            <Style.Setters>
+                <Setter Property="Foreground" Value="#FFDFDFDF"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+
+                    <Setter Property="Foreground" Value="DarkSlateGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="grid" Margin="0,0,0,0" Background="#FFD0D0D0">
+        <Button x:Name="BackBtn" Content="Back to menu"  Margin="10,10,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="45" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display" HorizontalAlignment="Left" Width="120" Click="BackBtn_Click" >
+            <Button.BorderBrush>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="file:///D:/Stas/навч/ТРПЗ-2/Prog/TRPZ-2/Button.png" Opacity="2"/>
+            </Button.Background>
+        </Button>
+    
+        <Label Content="Date from:" HorizontalAlignment="Left" Margin="28,262,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.422,0.227"/>
+        <Label Content="Date to:" HorizontalAlignment="Left" Margin="28,342,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.422,0.227"/>
+        <ComboBox HorizontalAlignment="Left" Margin="284,293,0,0" VerticalAlignment="Top" Width="192"/>
+        <Label Content="Choose car:" HorizontalAlignment="Left" Margin="284,262,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.422,0.227"/>
+        <Button x:Name="BookBtn" Content="Book slot"  Margin="284,347,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="45" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display" HorizontalAlignment="Left" Width="120"  >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.376"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.393"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.BorderBrush>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="file:///D:/Stas/навч/ТРПЗ-2/Prog/TRPZ-2/Button.png" Opacity="2"/>
+            </Button.Background>
+        </Button>
+
+
+
+
     </Grid>
 </Window>

@@ -28,8 +28,12 @@ namespace TRPZ_2.View
             InitializeComponent();
 
             pcw = new ParkingCoosingWnd(this, Grd);
+            
         }
 
-     
+        private async void Grd_Loaded(object sender, RoutedEventArgs e)
+        {
+           await pcw.SetUp();
+        }
     }
 }

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
-namespace TRPZ_2.Model
+namespace SocketServer.DB.DBModel
 {
     [Table("Users")]
     public class User
@@ -18,13 +16,23 @@ namespace TRPZ_2.Model
         public long Password { get; set; }
         public string PhoneNum { get; set; }
         public bool IsAdmin { get; set; }
-        public List<Car> Cars { get; set; }
+      
 
         public User()
         {
         }
+        public User(ModelsForWpf.User user)
+        {
+            this.Id = user.Id;
+            this.FullName = user.FullName;
+            this.Login = user.Login;
+            this.Password = user.Password;
+            this.PhoneNum = user.PhoneNum;
+            this.IsAdmin = user.IsAdmin;
+    
+        }
 
-        public User(int id, string fullName, string login, long password, string phoneNum, bool isAdmin, List<Car> cars)
+        public User(int id, string fullName, string login, long password, string phoneNum, bool isAdmin)
         {
             this.Id = id;
             this.FullName = fullName;
@@ -32,7 +40,6 @@ namespace TRPZ_2.Model
             this.Password = password;
             this.PhoneNum = phoneNum;
             this.IsAdmin = isAdmin;
-            this.Cars = cars;
         }
     }
 }
