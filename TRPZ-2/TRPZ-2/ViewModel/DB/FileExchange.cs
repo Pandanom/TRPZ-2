@@ -35,17 +35,16 @@ namespace TRPZ_2.ViewModel.DB
             while (socket.Available > 0);
             var length = BitConverter.ToInt64(temp, 0);
 
-          
-            byte[] last = new byte[length % 16384];
-            var data = new byte[16384];
+            int packageSize = 16384;          
+            var data = new byte[packageSize];
             using (FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write))
             {
-                int iter = (int)((length) / 16384);
+                int iter = (int)((length) / packageSize);
                 for (int i = 0; i < iter; i++)
                 {
-                    while (socket.Available < 16384)
-                       await Task.Delay(10);
-                    data = new byte[16384];
+                    while (socket.Available < packageSize)
+                       await Task.Delay(1);
+                    data = new byte[packageSize];
                     do
                     {
                         socket.Receive(data, data.Length, 0);
@@ -53,18 +52,19 @@ namespace TRPZ_2.ViewModel.DB
                     }
                     while (socket.Available > 0);
 
-                    await file.WriteAsync(data, 0, 16384);
+                    await file.WriteAsync(data, 0, packageSize);
                     socket.Send(new byte[] { 255 });
                 }
-                while (socket.Available < length % 16384)
-                    await Task.Delay(10);
+                while (socket.Available < 1)
+                    await Task.Delay(1);
+                int bytes = 0;
                 do
                 {
-                    socket.Receive(last, last.Length, 0);
+                    bytes =  socket.Receive(data, data.Length, 0);
 
                 }
-                while (socket.Available > 0);
-                await file.WriteAsync(data, 0, last.Length);
+                while (socket.Available > 0);                
+                await file.WriteAsync(data, 0, bytes);
             }
 
 

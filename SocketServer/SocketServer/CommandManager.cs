@@ -54,36 +54,43 @@ namespace SocketServer
                 }
             else if(first ==6)
             {
+           
+                await  Task.Run(async () => { 
                 using (FileStream file = new FileStream("1.zip", FileMode.OpenOrCreate, FileAccess.ReadWrite))
                 {
-                    byte[] buff = new byte[16384];
-                    byte[] last = new byte[file.Length % 16384];
+                    int packageSize = 16384;
+                    byte[] buff = new byte[packageSize];
+                   
                    
                     handler.Send( BitConverter.GetBytes(file.Length));
                     long persent = 0;
-                    int iter = (int)((file.Length) / 16384);
+                    int iter = (int)((file.Length) / packageSize);
                     for (int i = 0; i < iter; i++)
                     {
-                        await file.ReadAsync(buff,0, 16384);
+                        await file.ReadAsync(buff,0, packageSize);
                         if ((int)((file.Position * 100) / file.Length) > persent)
                         {
                             persent = (file.Position * 100) / file.Length;
-                            Console.WriteLine(persent + "% done");
+                            Console.WriteLine(file.Position/1024+"kb "+ persent + "% done");
                         }
                         handler.Send(buff);
 
                         while (handler.Available < 1)
-                            await Task.Delay(10);
+                            await Task.Delay(1);
                         handler.Receive(new byte[10]);
                     }
 
-                    await file.ReadAsync(last, 0, (int)(file.Length % 16384));
-                    handler.Send(last);
+                    int bytes = await file.ReadAsync(buff, 0, packageSize);
+                    handler.Send(buff,bytes,0);
+
+                    Console.WriteLine(file.Position / 1024 + "kb " + ++persent + "% done");
                 }
-               
+                });
+                return null;
             }
             else
                 return null;
+
             return null;
         }
 
