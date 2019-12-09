@@ -54,17 +54,30 @@ namespace SocketServer
                 }
             else if(first ==6)
             {
-                using (FileStream file = new FileStream("Agreement.docx", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                using (FileStream file = new FileStream("1.zip", FileMode.OpenOrCreate, FileAccess.ReadWrite))
                 {
                     byte[] buff = new byte[16384];
                     byte[] last = new byte[file.Length % 16384];
+                   
+                    handler.Send( BitConverter.GetBytes(file.Length));
+                    long persent = 0;
                     int iter = (int)((file.Length) / 16384);
                     for (int i = 0; i < iter; i++)
                     {
-                        file.Read(buff, i * 16384, 16384);
+                        await file.ReadAsync(buff,0, 16384);
+                        if ((int)((file.Position * 100) / file.Length) > persent)
+                        {
+                            persent = (file.Position * 100) / file.Length;
+                            Console.WriteLine(persent + "% done");
+                        }
                         handler.Send(buff);
+
+                        while (handler.Available < 1)
+                            await Task.Delay(10);
+                        handler.Receive(new byte[10]);
                     }
-                     file.Read(last, iter*16384, (int)(file.Length % 16384));
+
+                    await file.ReadAsync(last, 0, (int)(file.Length % 16384));
                     handler.Send(last);
                 }
                
