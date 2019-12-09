@@ -39,7 +39,13 @@ namespace TRPZ_2.ViewModel
             foreach (var u in users)
             {
                 if (u.Login.Trim() == login && u.Password == password.GetHashCode())
+                {
+                    StaticData.CurUser = u;
+                    Serv.StartUp.Start();
+                    //StaticData.bc = Task.Run(async ()=> { await Serv.StartUp.ListenBroadcast(); });
+                    Serv.StartUp.ListenBroadcast();
                     return true;
+                }
             }
             return false;
         }

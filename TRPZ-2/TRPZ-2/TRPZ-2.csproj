@@ -87,6 +87,8 @@
     <Compile Include="ViewModel\DB\UserRep.cs" />
     <Compile Include="ViewModel\ParkingCoosingWnd.cs" />
     <Compile Include="ViewModel\ParkingWndLogic.cs" />
+    <Compile Include="ViewModel\Serv\StartUp.cs" />
+    <Compile Include="ViewModel\StaticData.cs" />
     <Compile Include="View\AdminWnd.xaml.cs">
       <DependentUpon>AdminWnd.xaml</DependentUpon>
     </Compile>

@@ -34,11 +34,11 @@ namespace TRPZ_2.View
         private async void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
 
-          await new FileExchange().GetFile("1.zip");
-            //if (await new AccountManager().LogIn(LoginB.Text, PasswB.Password))
-            //    WindowManager.Navigate(this, new MenuWindow());
-            //else
-            //    MessageBox.Show("Invalid input!");
+          //await new FileExchange().GetFile("p.png");
+            if (await new AccountManager().LogIn(LoginB.Text, PasswB.Password))
+                WindowManager.Navigate(this, new MenuWindow());
+            else
+                MessageBox.Show("Invalid input!");
 
 
 
