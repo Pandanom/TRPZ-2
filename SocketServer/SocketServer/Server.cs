@@ -23,7 +23,7 @@ namespace SocketServer
             // Client  socket.  
             public  Socket workSocket = null;
             // Size of receive buffer.  
-            public const int BufferSize = 1024;
+            public const int BufferSize = 16384;
             // Receive buffer.  
             public  byte[] buffer = new byte[BufferSize];
        
@@ -43,18 +43,16 @@ namespace SocketServer
             public static void StartListening()
             {
                 // Establish the local endpoint for the socket.  
-                // The DNS name of the computer  
-                // running the listener is "host.contoso.com".  
-                IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-                IPAddress ipAddress = IPAddress.Parse("127.0.0.1");//ipHostInfo.AddressList[0];
-
+             
+                IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
+                
 
                 IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 8005);
 
                 // Create a TCP/IP socket.  
                 Socket listener = new Socket(ipAddress.AddressFamily,
                     SocketType.Stream, ProtocolType.Tcp);
-
+                
                 // Bind the socket to the local endpoint and listen for incoming connections.  
                 try
                 {

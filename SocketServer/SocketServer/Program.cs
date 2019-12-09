@@ -16,9 +16,15 @@ namespace SocketServer
 
         public static void Main(String[] args)
         {
-          
+            Task.Run( () => {
+                while (true)
+                {
+                    var str = Console.ReadLine();
+                    Broadcast.BroadcastMessage(str);
+                }
+            });
             var serv = new Server();
-
+          
         }
         
     }

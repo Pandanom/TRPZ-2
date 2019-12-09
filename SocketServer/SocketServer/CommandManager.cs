@@ -14,7 +14,7 @@ namespace SocketServer
 {
     class CommandManager
     {
-        static ICommand[] commands = new ICommand[5];
+        static ICommand[] commands = new ICommand[6];
         Socket handler;
         static CommandManager()
         {
@@ -23,6 +23,7 @@ namespace SocketServer
             commands[2] = new TalonCommand();
             commands[3] = new SlotCommand();
             commands[4] = new ParkingCommand();
+            commands[5] = new LogIn();
         }
         public CommandManager()
         {
@@ -42,49 +43,66 @@ namespace SocketServer
         async Task<byte[]> GetData(byte[] data)
         {
             int first = 0;
-              first = data[0] % 10;
-             if (first <= 5 )
+            first = data[0] % 10;
+            if (first <= 6)
                 try
                 {
                     return await commands[first - 1].GetData(data);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
                 }
-            else if(first ==6)
+            else if (first == 7)
             {
-           
-                await  Task.Run(async () => { 
-                using (FileStream file = new FileStream("1.zip", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+
+                await Task.Run(async () =>
                 {
-                    int packageSize = 16384;
-                    byte[] buff = new byte[packageSize];
-                   
-                   
-                    handler.Send( BitConverter.GetBytes(file.Length));
-                    long persent = 0;
-                    int iter = (int)((file.Length) / packageSize);
-                    for (int i = 0; i < iter; i++)
-                    {
-                        await file.ReadAsync(buff,0, packageSize);
-                        if ((int)((file.Position * 100) / file.Length) > persent)
+                    var path = new string(ASCIIEncoding.ASCII.GetChars(data, 1, data.Length - 1));
+                    var cleaned = path.Replace("\0", string.Empty);
+                    Console.WriteLine(cleaned);
+                    if (File.Exists(cleaned))
+                        using (FileStream file = new FileStream(cleaned, FileMode.Open, FileAccess.ReadWrite))
                         {
-                            persent = (file.Position * 100) / file.Length;
-                            Console.WriteLine(file.Position/1024+"kb "+ persent + "% done");
+                            //max 65535 
+                            int packageSize = 16384*4;
+                            byte[] buff = new byte[packageSize];
+
+                            var info = new byte[12];
+                            var arr1 = BitConverter.GetBytes(file.Length);
+                            var arr2 = BitConverter.GetBytes(packageSize);
+                            for (int i = 0; i < 8; i++)
+                                info[i] = arr1[i];
+                            for (int i = 8; i < 12; i++)
+                                info[i] = arr2[i-8];
+
+                            handler.Send(info);
+                            long persent = 0;
+                            int iter = (int)((file.Length) / packageSize);
+                            for (int i = 0; i < iter; i++)
+                            {
+                                await file.ReadAsync(buff, 0, packageSize);
+                                if ((int)((file.Position * 100) / file.Length) > persent)
+                                {
+                                    persent = (file.Position * 100) / file.Length;
+                                    Console.WriteLine(file.Position / 1024 + "kb " + persent + "% done");
+                                }
+                                handler.Send(buff);
+
+                                while (handler.Available < 1)
+                                    await Task.Delay(1);
+                                handler.Receive(new byte[10]);
+                            }
+
+                            int bytes = await file.ReadAsync(buff, 0, packageSize);
+                            handler.Send(buff, bytes, 0);
+
+                            Console.WriteLine(file.Position / 1024 + "kb " + ++persent + "% done");
                         }
-                        handler.Send(buff);
-
-                        while (handler.Available < 1)
-                            await Task.Delay(1);
-                        handler.Receive(new byte[10]);
+                    else
+                    {
+                        handler.Send(BitConverter.GetBytes((long)0));
                     }
-
-                    int bytes = await file.ReadAsync(buff, 0, packageSize);
-                    handler.Send(buff,bytes,0);
-
-                    Console.WriteLine(file.Position / 1024 + "kb " + ++persent + "% done");
-                }
                 });
                 return null;
             }
@@ -107,9 +125,7 @@ namespace SocketServer
                 if (data != null)
                     handler.Send(data);
                 else
-                    handler.Send(new byte[] { 1 });
-               
-                
+                    handler.Send(new byte[] { 1 });             
             }
              );
         }
