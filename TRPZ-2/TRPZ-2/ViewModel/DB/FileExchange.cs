@@ -11,17 +11,18 @@ using System.Windows;
 
 namespace TRPZ_2.ViewModel.DB
 {
-    class FileExchange
+    static class FileExchange
     {
-        public async Task GetFile(string path)
+        public static async Task GetFile(string path, string filename)
         {
+           
             using (var socket =  new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
             {              
                 IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["Ip"].ToString()),
                     int.Parse(ConfigurationManager.AppSettings["Port"].ToString()));
                 
                 socket.Connect(ipPoint);
-                var bytePath = ASCIIEncoding.ASCII.GetBytes(path.ToArray());
+                var bytePath = ASCIIEncoding.ASCII.GetBytes(filename.ToArray());
                 var toSend = new byte[bytePath.Length + 1];
                 toSend[0] = 77;
                 for (int i = 0; i < bytePath.Length; i++)
@@ -76,5 +77,30 @@ namespace TRPZ_2.ViewModel.DB
                 socket.Close();
             }
         }
+
+
+        public static async Task GetWCFFile(string path,string filename)
+        {
+           await Task.Run(async () =>
+            {
+                var ser = new FileService.DataServiceClient();
+                var id = ser.GetFileFSId(filename);
+                using (FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write))
+                {
+                    while (true)
+                    {
+                        var data = await ser.GetFilePartAsync(id);
+                        if (data == null)
+                            break;
+                        await file.WriteAsync(data, 0, data.Length);
+
+
+                    }
+                }
+            });
+        
+        }
+
+
     }
 }
