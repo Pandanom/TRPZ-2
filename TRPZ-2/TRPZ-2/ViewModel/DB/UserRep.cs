@@ -11,15 +11,17 @@ using System.Configuration;
 
 namespace TRPZ_2.ViewModel.DB
 {
-    class UserRep : IRepository<User>
+    public class UserRep : IRepository<User>
     {
         Socket socket;
         public UserRep()
         {
             try
             {
-                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["Ip"].ToString()),
-                  int.Parse(ConfigurationManager.AppSettings["Port"].ToString()));
+                //  IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["Ip"].ToString()),
+                // int.Parse(ConfigurationManager.AppSettings["Port"].ToString()));
+
+                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8005);
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.Connect(ipPoint);
             }
@@ -64,7 +66,7 @@ namespace TRPZ_2.ViewModel.DB
                 item.Id = id;
                 byte[] data = new Converter<User>().ObjectToByteArray(item);
                 var toSend = new byte[data.Length + 1];
-                toSend[0] = 31;
+                toSend[0] = 21;
                 for (int i = 0; i < data.Length; i++)
                     toSend[i + 1] = data[i];
                 socket.Send(toSend);

@@ -28,7 +28,7 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    <Grid Margin="0,0,0,0.4" Background="#FFD0D0D0" HorizontalAlignment="Left" Width="278">
+    <Grid Margin="0,0,0,0.4" Background="#FFD0D0D0" HorizontalAlignment="Left" Width="278" Loaded="Grid_Loaded">
 
         <Button    x:Name="LoginBtn"  Content="Log In" Margin="141,210,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="50" FontSize="14" FontWeight="Medium" TextOptions.TextFormattingMode="Display"  HorizontalAlignment="Left" Width="120" Click="LoginBtn_Click">
             <Button.BorderBrush>

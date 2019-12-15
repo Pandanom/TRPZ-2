@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TRPZ_2.ViewModel.DB
 {
-    interface IRepository<T> : IDisposable
+    public interface IRepository<T> : IDisposable
         where T : class
     {
         Task<IEnumerable<T>> GetItems(); 

@@ -37,8 +37,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="ModelsForWpf">
       <HintPath>..\..\ModelsForWpf\ModelsForWpf\bin\Debug\netstandard2.0\ModelsForWpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SocketWrapper">
+      <HintPath>..\..\SocketWrapper\SocketWrapper\bin\Debug\SocketWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -46,6 +58,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -86,9 +99,10 @@
     </Compile>
     <Compile Include="ViewModel\AccountManager.cs" />
     <Compile Include="ViewModel\DB\CarRep.cs" />
-    <Compile Include="ViewModel\DB\FileExchange.cs" />
+    <Compile Include="ViewModel\DB\Services\FileExchange.cs" />
     <Compile Include="ViewModel\DB\IRepository.cs" />
     <Compile Include="ViewModel\DB\ParkingRep.cs" />
+    <Compile Include="ViewModel\DB\Services\RESTAPIUserRep.cs" />
     <Compile Include="ViewModel\DB\SlotRep.cs" />
     <Compile Include="ViewModel\DB\TalonRep.cs" />
     <Compile Include="ViewModel\DB\UserRep.cs" />

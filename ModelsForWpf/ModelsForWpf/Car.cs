@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace ModelsForWpf
 {
     [Serializable]
+    [DataContract]
     public class Car
     {
+        [DataMember]
         public int Id { get; set; }
+        [DataMember]
         public string RegNum { get; set; }
+        [DataMember]
         public string Color { get; set; }
-        public string Info { get; set; }      
+        [DataMember]
+        public string Info { get; set; }
+        [DataMember]
         public User Owner { get; set; }
+        [DataMember]
         public List<Talon> UserTalons { get; set; }
 
 

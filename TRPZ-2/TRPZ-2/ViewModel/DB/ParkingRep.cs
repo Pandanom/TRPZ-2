@@ -11,7 +11,7 @@ using ModelsForWpf;
 
 namespace TRPZ_2.ViewModel.DB
 {
-    class ParkingRep : IRepository<Parking>
+    public class ParkingRep : IRepository<Parking>
     {
         Socket socket;
         public ParkingRep()

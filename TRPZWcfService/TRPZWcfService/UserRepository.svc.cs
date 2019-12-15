@@ -8,41 +8,47 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelsForWpf;
 using DBLib;
+using System.ServiceModel.Activation;
 
 namespace TRPZWcfService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "UserRepository" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select UserRepository.svc or UserRepository.svc.cs at the Solution Explorer and start debugging.
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUserRepository
     {
-        public Task Create(User item)
+       
+          
+
+        
+
+        public async Task Create(User item)
         {
-           
+            using (var userRep = new UserRep())
+                await userRep.Create(new DBLib.DBModel.User(item));
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var userRep = new UserRep())
+                await userRep.Delete(id);
         }
 
-        public User GetItem(int id)
+
+        public  List<User> GetItems()
         {
-            throw new NotImplementedException();
+            using (var userRep = new UserRep())
+            {
+                var l = userRep.GetItems();
+                List<User> ret = new List<User>();
+                foreach (var u in l)
+                    ret.Add(Converter.ToUser(u));
+                return ret;
+            }
         }
 
-        public IEnumerable<User> GetItems()
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task Save()
+        public async Task Update(User item)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task Update(User item)
-        {
-            throw new NotImplementedException();
+            using (var userRep = new UserRep())
+                await userRep.Update(new DBLib.DBModel.User(item));
         }
 
         #region IDisposable Support
@@ -54,6 +60,7 @@ namespace TRPZWcfService
             {
                 if (disposing)
                 {
+                   
                     // TODO: dispose managed state (managed objects).
                 }
 

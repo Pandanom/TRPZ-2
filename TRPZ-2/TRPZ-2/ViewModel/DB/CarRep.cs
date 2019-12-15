@@ -8,20 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using ModelsForWpf;
+using SocketWrapper;
 
 namespace TRPZ_2.ViewModel.DB
 {
-    class CarRep : IRepository<Car>
+    public class CarRep : IRepository<Car>
     {
-        Socket socket;
+        TCPSocket socket;
         public CarRep()
         {
             try
             {
                 IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["Ip"].ToString()),
                   int.Parse( ConfigurationManager.AppSettings["Port"].ToString()));
-                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                socket.Connect(ipPoint);
+                socket = new TCPSocket(StaticData.MyAddress,ipPoint);
+                socket.Connect().Wait();
             }
             catch (Exception ex)
             {
@@ -33,19 +34,19 @@ namespace TRPZ_2.ViewModel.DB
         public async Task Create(Car item)
         {
             //3
-            await Task.Run(() => {
+            await Task.Run(async () => {
                 byte[] data = new Converter<ModelsForWpf.Car>().ObjectToByteArray(item);
                 var toSend = new byte[data.Length + 1];
                 toSend[0] = 32;
                 for (int i = 0; i < data.Length; i++)
                     toSend[i + 1] = data[i];
-                socket.Send(toSend);
+               await socket.SendData(toSend);
             });
         }
 
         public async Task Delete(int id)
         {//5
-            await Task.Run(() => {
+            await Task.Run(async () => {
                 var item = new Car();
                 item.Id = id;
                 byte[] data = new Converter<ModelsForWpf.Car>().ObjectToByteArray(item);
@@ -53,13 +54,13 @@ namespace TRPZ_2.ViewModel.DB
                 toSend[0] = 52;
                 for (int i = 0; i < data.Length; i++)
                     toSend[i + 1] = data[i];
-                socket.Send(toSend);
+                await socket.SendData(toSend);
             });
         }
 
         public async Task<Car> GetItem(int id)
         {//2
-          return  await Task.Run(() => {
+          return  await Task.Run(async () => {
                 var item = new Car();
                 item.Id = id;
                 byte[] data = new Converter<Car>().ObjectToByteArray(item);
@@ -67,15 +68,13 @@ namespace TRPZ_2.ViewModel.DB
                 toSend[0] = 32;
                 for (int i = 0; i < data.Length; i++)
                     toSend[i + 1] = data[i];
-                socket.Send(toSend);
+               await socket.SendData(toSend);
 
                 data = new byte[1024];
-                do
-                {
-                    socket.Receive(data, data.Length, 0);
+               
+                   await socket.ReceiveData(data);
 
-                }
-                while (socket.Available > 0);
+               
                 try
                 {
                     var ret = new Converter<Car>().ByteArrayToObject(data);
@@ -91,19 +90,18 @@ namespace TRPZ_2.ViewModel.DB
 
         public async Task<IEnumerable<Car>> GetItems()
         {//1
-            return await Task.Run(() => {
+            return await Task.Run(async () => {
                 
                 var toSend = new byte[1];
                 toSend[0] = 12;
 
-                socket.Send(toSend);
+              await  socket.SendData(toSend);
 
                 byte[] data = new byte[10240];
-                do
-                {
-                    socket.Receive(data, data.Length, 0);
-                }
-                while (socket.Available > 0);
+                
+               
+                   await socket.ReceiveData(data);
+               
                 try
                 {
                     var ret = new Converter<List<Car>>().ByteArrayToObject(data);
@@ -119,13 +117,13 @@ namespace TRPZ_2.ViewModel.DB
 
         public async Task Update(Car item)
         {//4
-            await Task.Run(() => {
+            await Task.Run(async () => {
                 byte[] data = new Converter<ModelsForWpf.Car>().ObjectToByteArray(item);
                 var toSend = new byte[data.Length + 1];
                 toSend[0] = 42;
                 for (int i = 0; i < data.Length; i++)
                     toSend[i + 1] = data[i];
-                socket.Send(toSend);
+               await socket.SendData(toSend);
             });
         }
 
@@ -139,8 +137,8 @@ namespace TRPZ_2.ViewModel.DB
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects).
-                    socket.Shutdown(SocketShutdown.Both);
-                    socket.Close();
+
+                    socket.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.

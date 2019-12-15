@@ -8,11 +8,11 @@ using System.Data.Entity;
 
 namespace DBLib
 {
-    class UserRep : IRepository<User>
+    public class UserRep : IRepository<User>
     {
         private class Context : DbContext
         {
-            public Context() : base("DefaultConnection")
+            public Context() : base(@"Data Source=.\MYSQL;Initial Catalog=TRPZ_2;Integrated Security=True")
             { }
 
             public DbSet<User> Items { get; set; }
@@ -95,6 +95,7 @@ namespace DBLib
             {
                 if (disposing)
                 {
+                    db.SaveChangesAsync();
                     db.Dispose();
                    
                 }

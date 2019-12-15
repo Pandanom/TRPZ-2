@@ -12,6 +12,7 @@ namespace TRPZ_2.ViewModel
     {
         public static User CurUser { get; set; }
         public static IPEndPoint MyAddress { get; set; }
-        public static Task bc;
+        public static IPEndPoint ServerAddress { get; set; }
+        public static bool IsServerRunning { get; set; } 
     }
 }

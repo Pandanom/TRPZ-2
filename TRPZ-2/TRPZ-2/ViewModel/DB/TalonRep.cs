@@ -11,7 +11,7 @@ using ModelsForWpf;
 
 namespace TRPZ_2.ViewModel.DB
 {
-    class TalonRep : IRepository<Talon>
+    public class TalonRep : IRepository<Talon>
     {
         Socket socket;
         public TalonRep()

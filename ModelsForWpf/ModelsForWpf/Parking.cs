@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace ModelsForWpf
 {
     [Serializable]
+    [DataContract]
     public class Parking
     {
+        [DataMember]
         public int Id { get; set; }
+        [DataMember]
         public string Name { get; set; }
+        [DataMember]
         public string Adress { get; set; }
+        [DataMember]
         public List<Slot> Slots { get; set; }
 
         public Parking()

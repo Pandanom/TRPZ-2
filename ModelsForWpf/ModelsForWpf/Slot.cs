@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace ModelsForWpf
 {
     [Serializable]
+    [DataContract]
     public class Slot
     {
-       
+        [DataMember]
         public int Id { get; set; }
+        [DataMember]
         public List<Talon> Talons { get; set; }
+        [DataMember]
         public int XCord { get; set; }
+        [DataMember]
         public int YCord { get; set; }
+        [DataMember]
         public Parking Parking { get; set; }
 
         public Slot()

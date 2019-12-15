@@ -8,7 +8,7 @@ using System.Text;
 namespace DBLib.DBModel
 {
     [Table("UserCars")]
-    class UserCars
+    public class UserCars
     {
         public UserCars()
         {

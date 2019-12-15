@@ -1,19 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using TRPZ_2.ViewModel;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace TRPZ_2.View
 {
@@ -48,6 +35,20 @@ namespace TRPZ_2.View
         private void AdminMenuNavBtn_Click(object sender, RoutedEventArgs e)
         {
             WindowManager.Navigate(this, new AdminWnd());
+        }
+
+        private async void GetFile_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            CommonFileDialogResult result = dialog.ShowDialog();
+            if (result == CommonFileDialogResult.Ok)
+            {
+                if (rb0?.IsChecked ?? false)
+                    await ViewModel.DB.Services.FileExchange.GetWCFFile(dialog.FileName + "/", "Lisence.docx");
+                else if (rb1?.IsChecked ?? false)
+                    await ViewModel.DB.Services.FileExchange.GetFile(dialog.FileName + "/", "Lisence.docx");
+            }
         }
     }
 }

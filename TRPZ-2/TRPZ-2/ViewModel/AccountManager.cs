@@ -40,10 +40,7 @@ namespace TRPZ_2.ViewModel
             {
                 if (u.Login.Trim() == login && u.Password == password.GetHashCode())
                 {
-                    StaticData.CurUser = u;
-                    Serv.StartUp.Start();
-                    //StaticData.bc = Task.Run(async ()=> { await Serv.StartUp.ListenBroadcast(); });
-                    Serv.StartUp.ListenBroadcast();
+                    StaticData.CurUser = u;                   
                     return true;
                 }
             }

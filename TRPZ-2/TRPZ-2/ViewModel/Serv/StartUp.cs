@@ -9,70 +9,35 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-
+using SocketWrapper;
 namespace TRPZ_2.ViewModel.Serv
 {
     static class StartUp
     {
-        public static void  Start()
+        public static async Task Start()
         {
+           await Task.Run(() => { 
             IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["Ip"].ToString()),
                  int.Parse(ConfigurationManager.AppSettings["Port"].ToString()));
-           
-            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
-            {
-                socket.Connect(ipPoint);
-                
-                
-                StaticData.MyAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
-
-                byte[] data = new Converter<UserIp>().ObjectToByteArray(
-                        new UserIp() { User = StaticData.CurUser, Address = StaticData.MyAddress });
-                    var toSend = new byte[data.Length + 1];
-                    toSend[0] = 66;
-                    for (int i = 0; i < data.Length; i++)
-                        toSend[i + 1] = data[i];
-                    socket.Send(toSend);
-                //});
-            }
-
-        }
-        public static ManualResetEvent allDone = new ManualResetEvent(false);
-        public static void ListenBroadcast()
-        {
-            Socket listener = new Socket(StaticData.MyAddress.Address.AddressFamily,
-                  SocketType.Stream, ProtocolType.Tcp);
-
-            IPEndPoint localEndPoint = new IPEndPoint(StaticData.MyAddress.Address, 8000);
-            listener.Bind(localEndPoint);
-
-            listener.Listen(100);
-            Task.Run(() => {
-               while (true)
-               {
-                   allDone.Reset();
-                   listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
-                   allDone.WaitOne();
-               }
+            StaticData.MyAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
+            StaticData.ServerAddress = ipPoint;
+            StaticData.IsServerRunning = false;
+            ListenBroadcast();
             });
-
         }
-
-        static void AcceptCallback(IAsyncResult ar)
+        static UDPSocket.ToDo toDo = RecieveMessage;
+        static void ListenBroadcast()
         {
-
-            Socket listener = (Socket)ar.AsyncState;
-            Socket handler = listener.EndAccept(ar);
-            var buff = new byte[1024];
-            do
-            {
-                handler.Receive(buff);
-            }
-            while (handler.Available > 0);
-            MessageBox.Show(new string(ASCIIEncoding.ASCII.GetChars(buff)));
-            allDone.Set();
+            IPAddress ipAddress2 = IPAddress.Parse("127.254.255.255");
+            IPEndPoint remoteEndPoint = new IPEndPoint(ipAddress2, 8005);
+            UDPSocket socket = new UDPSocket(StaticData.MyAddress, remoteEndPoint);
+            var t = socket.StartListening(toDo);
         }
 
+        static async Task RecieveMessage(UDPSocket s,byte[] data)
+        {
+           MessageBox.Show( ASCIIEncoding.ASCII.GetString(data));
+        }
 
     }
 }

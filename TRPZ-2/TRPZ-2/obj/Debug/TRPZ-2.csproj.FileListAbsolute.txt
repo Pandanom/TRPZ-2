@@ -167,3 +167,11 @@ D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\System.Xml.XPath.XDocum
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\ModelsForWpf.dll
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\ModelsForWpf.pdb
 D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\obj\Debug\TRPZ-2.exe.config
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\Newtonsoft.Json.dll
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\Newtonsoft.Json.xml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\Microsoft.WindowsAPICodePack.dll
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\Microsoft.WindowsAPICodePack.xml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\SocketWrapper.dll
+D:\Stas\навч\ТРПЗ-2\Prog\TRPZ-2\TRPZ-2\bin\Debug\SocketWrapper.pdb

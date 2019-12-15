@@ -8,11 +8,11 @@ using DBLib.DBModel;
 
 namespace DBLib
 {
-    class UserCarRep:IRepository<UserCars>
+    public class UserCarRep:IRepository<UserCars>
     {
         private class Context : DbContext
         {
-            public Context() : base("DefaultConnection")
+            public Context() : base(@"Data Source=.\MYSQL;Initial Catalog=TRPZ_2;Integrated Security=True")
             { }
   
             public DbSet<UserCars> Items { get; set; }
@@ -93,6 +93,7 @@ namespace DBLib
             {
                 if (disposing)
                 {
+                    db.SaveChangesAsync();
                     db.Dispose();
 
                 }

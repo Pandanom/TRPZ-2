@@ -11,7 +11,7 @@ using ModelsForWpf;
 
 namespace TRPZ_2.ViewModel.DB
 {
-    class SlotRep : IRepository<Slot>
+    public class SlotRep : IRepository<Slot>
     {
         Socket socket;
         public SlotRep()

@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace DBLib
 {
-    class ParkingRep : IRepository<Parking>
+   public  class ParkingRep : IRepository<Parking>
     {
         private class Context : DbContext
         {
@@ -95,6 +95,7 @@ namespace DBLib
             {
                 if (disposing)
                 {
+                    db.SaveChangesAsync();
                     db.Dispose();
 
                 }

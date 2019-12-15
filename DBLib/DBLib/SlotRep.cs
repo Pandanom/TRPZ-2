@@ -8,7 +8,7 @@ using DBLib.DBModel;
 
 namespace DBLib
 {
-    class SlotRep : IRepository<Slot>
+    public class SlotRep : IRepository<Slot>
     {
         private class Context : DbContext
         {
@@ -96,6 +96,7 @@ namespace DBLib
             {
                 if (disposing)
                 {
+                    db.SaveChangesAsync();
                     db.Dispose();
 
                 }

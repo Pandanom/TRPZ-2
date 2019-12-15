@@ -41,7 +41,7 @@ namespace SocketServer.DB
         public async Task Create(User item)
         {
             await Task.Run(() =>  db.Items.Add(item));
-        }
+         }
 
         public  async Task Update(User item)
         {
