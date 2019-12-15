@@ -7,10 +7,9 @@ namespace ModelsForWpf
 {
     [Serializable]
     [DataContract]
-    public class Parking
+    public class Parking:BDMember
     {
-        [DataMember]
-        public int Id { get; set; }
+       
         [DataMember]
         public string Name { get; set; }
         [DataMember]

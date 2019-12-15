@@ -6,10 +6,9 @@ namespace ModelsForWpf
 {
     [Serializable]
     [DataContract]
-    public class Car
+    public class Car: BDMember
     {
-        [DataMember]
-        public int Id { get; set; }
+        
         [DataMember]
         public string RegNum { get; set; }
         [DataMember]

@@ -99,6 +99,7 @@
     </Compile>
     <Compile Include="ViewModel\AccountManager.cs" />
     <Compile Include="ViewModel\DB\CarRep.cs" />
+    <Compile Include="ViewModel\DB\GenericRep.cs" />
     <Compile Include="ViewModel\DB\Services\FileExchange.cs" />
     <Compile Include="ViewModel\DB\IRepository.cs" />
     <Compile Include="ViewModel\DB\ParkingRep.cs" />

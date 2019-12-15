@@ -7,10 +7,9 @@ namespace ModelsForWpf
 {
     [Serializable]
     [DataContract]
-    public class Slot
+    public class Slot : BDMember
     {
-        [DataMember]
-        public int Id { get; set; }
+        
         [DataMember]
         public List<Talon> Talons { get; set; }
         [DataMember]

@@ -36,7 +36,7 @@ namespace TRPZ_2.ViewModel.Serv
 
         static async Task RecieveMessage(UDPSocket s,byte[] data)
         {
-           MessageBox.Show( ASCIIEncoding.ASCII.GetString(data));
+           ASCIIEncoding.ASCII.GetString(data);
         }
 
     }

@@ -14,16 +14,17 @@ namespace TRPZ_2.ViewModel
 
         public async Task RegistrateUser(User u)
         {
-           
-            UserRep ur = new UserRep();
-            await ur.Create(u);
-         
+
+            using (var ur = new GenericRep<User>())
+            {
+                await ur.Create(u);
+            }
             
         }
 
         public async Task<bool> Validate(string login,string pass1,string pass2, string number,string name)
         {
-            if(pass1 == pass2 && login !="" && name!="" && pass1!=" " && pass1 != "")
+            if(pass1 == pass2 && login !="" && name!="" && pass1!="" && pass1 != "")
             {
                 await RegistrateUser( new User(0, name, login, pass1.GetHashCode(), number, false, null));
                 return true;
@@ -34,14 +35,16 @@ namespace TRPZ_2.ViewModel
         }
         public async Task<bool> LogIn(string login,string password)
         {
-            UserRep ur = new UserRep();
-            List<User> users = (await ur.GetItems()).ToList();
-            foreach (var u in users)
+            using (var ur = new GenericRep<User>())
             {
-                if (u.Login.Trim() == login && u.Password == password.GetHashCode())
+                List<User> users = (await ur.GetItems()).ToList();
+                foreach (var u in users)
                 {
-                    StaticData.CurUser = u;                   
-                    return true;
+                    if (u.Login.Trim() == login && u.Password == password.GetHashCode())
+                    {
+                        StaticData.CurUser = u;
+                        return true;
+                    }
                 }
             }
             return false;

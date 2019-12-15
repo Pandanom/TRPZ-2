@@ -7,10 +7,9 @@ namespace ModelsForWpf
 {
     [Serializable]
     [DataContract]
-    public class Talon
+    public class Talon : BDMember
     {
-        [DataMember]
-        public int Id { get; set; }
+        
         [DataMember]
         public DateTime One { get; set; }
         [DataMember]
