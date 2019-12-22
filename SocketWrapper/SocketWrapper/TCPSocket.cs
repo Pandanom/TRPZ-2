@@ -57,6 +57,8 @@ namespace SocketWrapper
                         await toDo(new TCPSocket(handler));
                         watch.Stop();
                         Console.WriteLine("Connection ended, connection time :" +watch.ElapsedMilliseconds+"ms");
+                        if (!listenFlag)
+                            return;
                     }
                });
         }

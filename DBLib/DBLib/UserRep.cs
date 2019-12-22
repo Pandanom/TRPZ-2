@@ -10,9 +10,10 @@ namespace DBLib
 {
     public class UserRep : IRepository<User>
     {
+        static string cs = null;
         private class Context : DbContext
         {
-            public Context() : base(@"Data Source=.\MYSQL;Initial Catalog=TRPZ_2;Integrated Security=True")
+            public Context() : base(cs ?? @"Data Source=.\MYSQL;Initial Catalog=TRPZ_2;Integrated Security=True")
             { }
 
             public DbSet<User> Items { get; set; }
@@ -22,6 +23,12 @@ namespace DBLib
 
         public UserRep()
         {
+            db = new Context();
+        }
+
+        public UserRep(string ConnStr)
+        {
+            cs = ConnStr;
             db = new Context();
         }
 
@@ -49,8 +56,13 @@ namespace DBLib
             {
                 if (db.Items.ToArray()[i].Id == item.Id)
                 {
-                    db.Items.ToArray()[i] = item;
-                    await Task.Run(() => db.Entry(item).State = EntityState.Modified);
+                    db.Items.ToArray()[i].FullName = item.FullName;
+                    db.Items.ToArray()[i].IsAdmin = item.IsAdmin;
+                    db.Items.ToArray()[i].Login = item.Login;
+                    db.Items.ToArray()[i].Password = item.Password;
+                    db.Items.ToArray()[i].PhoneNum = item.PhoneNum;
+                 
+                    
                     return;
                 }
             }

@@ -10,9 +10,10 @@ namespace DBLib
 {
     public class SlotRep : IRepository<Slot>
     {
+        static string cs = null;
         private class Context : DbContext
         {
-            public Context() : base(@"Data Source =.\MYSQL; Initial Catalog = TRPZ_2; Integrated Security = True")
+            public Context() : base(cs ?? @"Data Source=.\MYSQL;Initial Catalog=TRPZ_2;Integrated Security=True")
             { }
 
             public DbSet<Slot> Items { get; set; }
@@ -22,6 +23,11 @@ namespace DBLib
 
         public SlotRep()
         {
+            db = new Context();
+        }
+        public SlotRep(string ConnStr)
+        {
+            cs = ConnStr;
             db = new Context();
         }
 

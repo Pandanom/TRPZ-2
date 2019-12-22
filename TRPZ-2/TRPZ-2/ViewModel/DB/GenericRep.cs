@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace TRPZ_2.ViewModel.DB
 {
-    class GenericRep<T> : IRepository<T> where T : BDMember
+    public class GenericRep<T> : IRepository<T> where T : BDMember
     {
         TCPSocket socket;
         byte first;
@@ -21,6 +21,10 @@ namespace TRPZ_2.ViewModel.DB
         {
             try
             {
+                //IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8005);
+                //IPEndPoint ipPoint1 = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8004);
+                //socket = new TCPSocket(ipPoint1, ipPoint);
+
                 IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["Ip"].ToString()),
                   int.Parse(ConfigurationManager.AppSettings["Port"].ToString()));
                 socket = new TCPSocket(StaticData.MyAddress, ipPoint);

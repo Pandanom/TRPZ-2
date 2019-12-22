@@ -10,11 +10,12 @@ namespace DBLib
 {
     public class UserCarRep:IRepository<UserCars>
     {
+        static string cs = null;
         private class Context : DbContext
         {
-            public Context() : base(@"Data Source=.\MYSQL;Initial Catalog=TRPZ_2;Integrated Security=True")
+            public Context() : base(cs ?? @"Data Source=.\MYSQL;Initial Catalog=TRPZ_2;Integrated Security=True")
             { }
-  
+
             public DbSet<UserCars> Items { get; set; }
         }
 
@@ -22,6 +23,11 @@ namespace DBLib
 
         public UserCarRep()
         {
+            db = new Context();
+        }
+        public UserCarRep(string ConnStr)
+        {
+            cs = ConnStr;
             db = new Context();
         }
 

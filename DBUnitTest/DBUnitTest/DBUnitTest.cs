@@ -1,50 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ModelsForWpf;
-using TRPZ_2.ViewModel.DB;
+using DBLib;
+using DBLib.DBModel;
+using System.Collections.Generic;
 
-namespace DBTest
+namespace DBUnitTest
 {
     [TestClass]
-    public class UserDBTest
+    public class DBUnitTest
     {
-        
+        const string cs = @"Data Source=.\MYSQL;Initial Catalog=TRPZ_2;Integrated Security=True";
+
         [TestMethod]
         public async Task UserRepCreateTest()
         {
-            User test = new User(0, "testUser", "TestLogin", 111111, "test", false, null);
+            
+            User test = new User(0, "testUser", "TestLogin", 111111, "test", false);
             try
             {
-                var ur = new UserRep();
-                
+                using (var ur = new UserRep(cs))
+                {
                     await ur.Create(test);
-                ur.Dispose();
-
-                
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               
+
                 Assert.Fail(ex.Message);
             }
 
-            
+
         }
 
         [TestMethod]
-        public async Task GetUserFromDBTest()
+        public void GetUserFromDBTest()
         {
-            User test = new User(1, "qwq", "qqq", -1337154236, "123", false, new List<Car>());
+            User test = new User(1, "qwq", "qqq", -1337154236, "123", false);
             User u;
             try
             {
-                var ur = new UserRep();
+                using (var ur = new UserRep(cs))
+                    u =  ur.GetItem(1);
 
-                u =  await ur.GetItem(1);
-                   
-                ur.Dispose();
+
 
                 Assert.AreEqual(test.FullName, u.FullName);
                 Assert.AreEqual(test.Id, u.Id);
@@ -52,24 +51,24 @@ namespace DBTest
             }
             catch (Exception ex)
             {
-               
+
                 Assert.Fail(ex.Message);
-            }    
+            }
         }
 
         [TestMethod]
         public async Task DeleteUserFromDBTest()
         {
-         
+
             try
             {
-                var ur = new UserRep();
 
-                 await ur.Delete(2);
+                using (var ur = new UserRep(cs))
+                    await ur.Delete(5);
 
-                ur.Dispose();
 
-               
+
+
             }
             catch (Exception ex)
             {
@@ -82,13 +81,13 @@ namespace DBTest
         public async Task UpdateUserFromDBTest()
         {
 
-            User test = new User(3, "qwq", "qqq", -1337154236, "123", false, new List<Car>());
-            
+            User test = new User(13, "qwq", "qqq", -1337154236, "123", false);
+
             try
             {
-                var ur = new UserRep();
-                 await ur.Update(test);
-                ur.Dispose();             
+                using (var ur = new UserRep(cs))
+                    await ur.Update(test);
+
             }
             catch (Exception ex)
             {
@@ -97,16 +96,16 @@ namespace DBTest
             }
         }
         [TestMethod]
-        public async Task GetItemsUserFromDBTest()
+        public void GetItemsUserFromDBTest()
         {
 
-          
+
             try
             {
-                var ur = new UserRep();
-                var c =new List<User>( await ur.GetItems());
-                ur.Dispose();
-                Assert.AreEqual(c.Count, 13);
+                List<User> c;
+                using (var ur = new UserRep(cs))
+                    c = new List<User>( ur.GetItems());
+                Assert.AreEqual(c.Count, 9);
             }
             catch (Exception ex)
             {
@@ -114,6 +113,5 @@ namespace DBTest
                 Assert.Fail(ex.Message);
             }
         }
-
     }
 }
